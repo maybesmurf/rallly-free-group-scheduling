@@ -27,6 +27,9 @@ export default withLink(
               include: {
                 votes: true,
               },
+              orderBy: {
+                value: "asc",
+              },
             },
             participants: {
               include: {

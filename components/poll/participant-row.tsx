@@ -5,7 +5,7 @@ import * as React from "react";
 import Button from "../button";
 import Pencil from "../icons/pencil.svg";
 import Trash from "../icons/trash.svg";
-import { usePoll } from "../use-poll";
+import { usePoll } from "../poll-context";
 import { useUpdateParticipantMutation } from "./mutations";
 import ParticipantRowForm from "./participant-row-form";
 import { ControlledScrollDiv } from "./poll";
@@ -45,7 +45,7 @@ const ParticipantRow: React.VoidFunctionComponent<ParticipantRowProps> = ({
   const [deleteParticipantConfirModal, confirmDeleteParticipant] =
     useDeleteParticipantModal(urlId, participant.id);
 
-  const poll = usePoll();
+  const { poll } = usePoll();
   if (editMode) {
     return (
       <ParticipantRowForm

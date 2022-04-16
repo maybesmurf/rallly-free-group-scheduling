@@ -1,6 +1,6 @@
 import { updatePoll, UpdatePollPayload } from "api-client/update-poll";
 import { usePlausible } from "next-plausible";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 
 import { addParticipant } from "../../api-client/add-participant";
 import {
@@ -12,7 +12,7 @@ import {
   updateParticipant,
   UpdateParticipantPayload,
 } from "../../api-client/update-participant";
-import { usePoll } from "../use-poll";
+import { usePoll } from "../poll-context";
 import { useUserName } from "../user-name-context";
 import { ParticipantForm } from "./types";
 
@@ -100,7 +100,7 @@ export const useDeleteParticipantMutation = (pollId: string) => {
 };
 
 export const useUpdatePollMutation = () => {
-  const poll = usePoll();
+  const { poll } = usePoll();
   const plausible = usePlausible();
   const queryClient = useQueryClient();
 
